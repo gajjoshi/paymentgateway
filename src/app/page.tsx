@@ -6,7 +6,7 @@ export default function App() {
         <>
             <div className="container mx-auto p-4">
                 <header className="flex justify-center mb-8">
-                    <img src='./mansoor.png' alt="Logo" className="h-500" />
+                    <img src='./mansoor.png' alt="Logo" className="h-50" />
                 </header>
                 <div className="bg-white bg-opacity-10 p-8 rounded-lg shadow-lg max-w-md mx-auto">
                     <h1 className="cobra text-4xl font-bold text-center mb-8">Donate</h1>
