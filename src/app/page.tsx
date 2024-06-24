@@ -47,8 +47,9 @@ export default function App() {
                 <header className="flex justify-center mb-8">
                     <img src='/mansoor.png' alt="Logo" className="h-80 w-80" />
                 </header>
+
                 <div className="bg-white bg-opacity-10 p-8 rounded-lg shadow-lg max-w-md mx-auto">
-                    <h1 className="cobra text-4xl font-bold text-center mb-8">Donate</h1>
+                <img src='/D247.png' alt="Logo" className="h-15 w-15 mb-10" />
                     <form className="space-y-6" onSubmit={handleSubmit}>
                         <div>
                             <label htmlFor="username" className="block text-lg font-medium text-gray-200">Username</label>
