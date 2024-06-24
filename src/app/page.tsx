@@ -45,7 +45,7 @@ export default function App() {
             <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="beforeInteractive" />
             <div className="container mx-auto p-10">
                 <header className="flex justify-center mb-8">
-                    <img src='/mansoor.png' alt="Logo" className="h-80 w-80" />
+                    <img src='/mansoor.png' alt="Logo" className="h-72 w-72" />
                 </header>
 
                 <div className="bg-white bg-opacity-10 p-8 rounded-lg shadow-lg max-w-md mx-auto">
