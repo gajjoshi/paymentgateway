@@ -3,6 +3,12 @@
 import React, { useState, FormEvent } from 'react';
 import Script from 'next/script';
 
+interface RazorpayResponse {
+    razorpay_payment_id: string;
+    razorpay_order_id?: string;
+    razorpay_signature?: string;
+}
+
 export default function App() {
     const [username, setUsername] = useState('');
     const [amount, setAmount] = useState('');
@@ -16,7 +22,7 @@ export default function App() {
             name: 'Your Company Name',
             description: 'Donation',
             image: '/mansoor.png', // Path to your logo image in the public directory
-            handler: function(response) {
+            handler: function(response: RazorpayResponse) {
                 alert(`Payment ID: ${response.razorpay_payment_id}`);
                 // You can handle the success or failure response here
             },
