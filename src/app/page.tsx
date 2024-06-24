@@ -62,7 +62,7 @@ export default function App() {
                             />
                         </div>
                         <div>
-                            <label htmlFor="amount" className="block text-lg font-medium text-gray-200">Donation Amount</label>
+                            <label htmlFor="amount" className="block text-lg font-medium text-gray-200">Amount</label>
                             <input
                                 type="number"
                                 id="amount"
@@ -71,6 +71,8 @@ export default function App() {
                                 onChange={(e) => setAmount(e.target.value)}
                                 className="mt-1 block w-full px-4 py-2 bg-white-800 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bold-text" // Apply bold-text class here
                                 />
+                                                            <p className="text-sm text-gray-500 mt-1">* 10% Signing Bonus . 7% Standard deposit</p>
+
                         </div>
                         <div className="text-center">
                             <button
