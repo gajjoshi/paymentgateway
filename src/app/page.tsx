@@ -1,13 +1,13 @@
 "use client"; // This directive is necessary to indicate that this is a Client Component
 
-import React, { useState } from 'react';
+import React, { useState, FormEvent } from 'react';
 import Script from 'next/script';
 
 export default function App() {
     const [username, setUsername] = useState('');
     const [amount, setAmount] = useState('');
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const razorpayOptions = {
             key: 'rzp_test_gWRG1xXp3xxAYs', // Replace with your Razorpay key_id
@@ -30,7 +30,7 @@ export default function App() {
             }
         };
 
-        const rzp = new window.Razorpay(razorpayOptions);
+        const rzp = new (window as any).Razorpay(razorpayOptions);
         rzp.open();
     };
 
