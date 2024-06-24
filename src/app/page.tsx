@@ -4,7 +4,7 @@ import bg from './mansoor.png';
 export default function App() {
     return (
         <>
-            <div className="container mx-auto p-4">
+            <div className="container mx-auto p-10">
                 <header className="flex justify-center mb-8">
                     <img src='./mansoor.png' alt="Logo" className="h-80 w-80" />
                 </header>
