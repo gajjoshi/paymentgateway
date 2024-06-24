@@ -20,7 +20,7 @@ export default function App() {
             amount: Number(amount) * 100, // Amount is in paisa (Indian currency)
             currency: 'INR', // You can change currency if needed
             name: 'Prime 999 Boook ',
-            description: 'Donation',
+            description: 'Deposit Amount',
             image: '/mansoor.png', // Path to your logo image in the public directory
             handler: function(response: RazorpayResponse) {
                 alert(`Payment ID: ${response.razorpay_payment_id}`);
@@ -32,7 +32,7 @@ export default function App() {
                 contact: '9999999999' // Replace with user's mobile number
             },
             theme: {
-                color: '#3399cc' // You can customize the color
+                color: '#33FF90' // You can customize the color
             }
         };
 
