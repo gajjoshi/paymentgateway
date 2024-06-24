@@ -19,7 +19,7 @@ export default function App() {
             key: 'rzp_test_gWRG1xXp3xxAYs', // Replace with your Razorpay key_id
             amount: Number(amount) * 100, // Amount is in paisa (Indian currency)
             currency: 'INR', // You can change currency if needed
-            name: 'Your Company Name',
+            name: 'Prime 999 Boook ',
             description: 'Donation',
             image: '/mansoor.png', // Path to your logo image in the public directory
             handler: function(response: RazorpayResponse) {
@@ -69,8 +69,8 @@ export default function App() {
                                 name="amount"
                                 value={amount}
                                 onChange={(e) => setAmount(e.target.value)}
-                                className="mt-1 block w-full px-4 py-2 bg-white-800 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            />
+                                className="mt-1 block w-full px-4 py-2 bg-white-800 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bold-text" // Apply bold-text class here
+                                />
                         </div>
                         <div className="text-center">
                             <button

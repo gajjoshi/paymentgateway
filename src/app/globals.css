@@ -23,7 +23,9 @@ body {
 .cobra {
   color: aliceblue;
 }
-
+.bold-text {
+  font-weight: 800; /* Adjust the value as needed for desired boldness */
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;
