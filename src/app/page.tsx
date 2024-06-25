@@ -19,12 +19,11 @@ export default function App() {
             key: 'rzp_test_gWRG1xXp3xxAYs', // Replace with your Razorpay key_id
             amount: Number(amount) * 100, // Amount is in paisa (Indian currency)
             currency: 'INR', // You can change currency if needed
-            name: 'Prime 999 Boook ',
-            description: 'Deposit Amount',
+            name: 'Donation Campaign',
+            description: 'Donate',
             image: '/mansoor.png', // Path to your logo image in the public directory
             handler: function(response: RazorpayResponse) {
                 alert(`Payment ID: ${response.razorpay_payment_id}`);
-                // You can handle the success or failure response here
             },
             prefill: {
                 name: username,
@@ -33,6 +32,14 @@ export default function App() {
             },
             theme: {
                 color: '#33FF90' // You can customize the color
+            },
+            method: {
+                netbanking: true,
+                card: true,
+                upi: true,
+                wallet: true,
+                emi: true,
+                paylater: true
             }
         };
 
@@ -49,7 +56,7 @@ export default function App() {
                 </header>
 
                 <div className="bg-white bg-opacity-10 p-8 rounded-lg shadow-lg max-w-md mx-auto">
-                <img src='/D247.png' alt="Logo" className="h-36 w-72 mb-10" />
+                    {/* <img src='/D247.png' alt="Logo" className="h-36 w-72 mb-10" /> */}
                     <form className="space-y-6" onSubmit={handleSubmit}>
                         <div>
                             <label htmlFor="username" className="block text-lg font-medium text-gray-200">Username</label>
@@ -70,10 +77,9 @@ export default function App() {
                                 name="amount"
                                 value={amount}
                                 onChange={(e) => setAmount(e.target.value)}
-                                className="mt-1 block w-full px-4 py-2 bg-white-800 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bold-text" // Apply bold-text class here
-                                />
-                                                            <p className="text-sm text-gray-500 mt-1">* 10% Signing Bonus . 7% Standard deposit</p>
-
+                                className="mt-1 block w-full px-4 py-2 bg-white-800 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bold-text"
+                            />
+                            <p className="text-sm text-gray-500 mt-1">* 10% Signing Bonus . 7% Standard deposit</p>
                         </div>
                         <div className="text-center">
                             <button

@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "D247 Online Gaming",
+  title: "Donation Campaign",
   description: "Payment Link",
 };
 
