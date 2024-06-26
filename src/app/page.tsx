@@ -16,7 +16,7 @@ export default function App() {
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const razorpayOptions = {
-            key: 'rzp_test_gWRG1xXp3xxAYs', // Replace with your Razorpay key_id
+            key: 'rzp_test_wabXQaAgFdtKTT', // Replace with your Razorpay key_id
             amount: Number(amount) * 100, // Amount is in paisa (Indian currency)
             currency: 'INR', // You can change currency if needed
             name: 'Donation Campaign',
