@@ -10,7 +10,7 @@ export default function App() {
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const upiString = `upi://pay?appid=inb_admin&tr=IND18377b3e21b44eed8e07d83bfbcf3c2d&mc=&pa=deepaktraders201@mahb&pn=DEEPAK TRADERS `;
+        const upiString = `upi://pay?pa=gajjoshi2003-2@oksbi&pn=Gaj%20Joshi&aid=uGICAgMCytK-RRg`;
         setUpiLink(upiString);
     };
 
@@ -44,7 +44,6 @@ export default function App() {
                                 onChange={(e) => setAmount(e.target.value)}
                                 className="mt-1 block w-full px-4 py-2 bg-white-800 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bold-text"
                             />
-                            <p className="text-sm text-gray-500 mt-1">* 10% Signing Bonus . 7% Standard deposit</p>
                         </div>
                         <div className="text-center">
                             <button
