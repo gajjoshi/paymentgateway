@@ -1,62 +1,27 @@
 "use client"; // This directive is necessary to indicate that this is a Client Component
 
 import React, { useState, FormEvent } from 'react';
-import Script from 'next/script';
-
-interface RazorpayResponse {
-    razorpay_payment_id: string;
-    razorpay_order_id?: string;
-    razorpay_signature?: string;
-}
+import QRCode from 'qrcode.react';
 
 export default function App() {
     const [username, setUsername] = useState('');
     const [amount, setAmount] = useState('');
+    const [upiLink, setUpiLink] = useState('');
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const razorpayOptions = {
-            key: 'rzp_test_wabXQaAgFdtKTT', // Replace with your Razorpay key_id
-            amount: Number(amount) * 100, // Amount is in paisa (Indian currency)
-            currency: 'INR', // You can change currency if needed
-            name: 'Donation Campaign',
-            description: 'Donate',
-            image: '/mansoor.png', // Path to your logo image in the public directory
-            handler: function(response: RazorpayResponse) {
-                alert(`Payment ID: ${response.razorpay_payment_id}`);
-            },
-            prefill: {
-                name: username,
-                email: 'example@example.com', // Replace with user's email
-                contact: '9999999999' // Replace with user's mobile number
-            },
-            theme: {
-                color: '#33FF90' // You can customize the color
-            },
-            method: {
-                netbanking: true,
-                card: true,
-                upi: true,
-                wallet: true,
-                emi: true,
-                paylater: true
-            }
-        };
-
-        const rzp = new (window as any).Razorpay(razorpayOptions);
-        rzp.open();
+        const upiString = `upi://pay?appid=inb_admin&tr=IND18377b3e21b44eed8e07d83bfbcf3c2d&mc=&pa=deepaktraders201@mahb&pn=DEEPAK TRADERS&am=${amount}`;
+        setUpiLink(upiString);
     };
 
     return (
         <>
-            <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="beforeInteractive" />
             <div className="container mx-auto p-10">
                 <header className="flex justify-center mb-2">
                     <img src='/mansoor.png' alt="Logo" className="h-60 w-60" />
                 </header>
 
                 <div className="bg-white bg-opacity-10 p-8 rounded-lg shadow-lg max-w-md mx-auto">
-                    {/* <img src='/D247.png' alt="Logo" className="h-36 w-72 mb-10" /> */}
                     <form className="space-y-6" onSubmit={handleSubmit}>
                         <div>
                             <label htmlFor="username" className="block text-lg font-medium text-gray-200">Username</label>
@@ -86,10 +51,20 @@ export default function App() {
                                 type="submit"
                                 className="w-full px-6 py-3 bg-blue-700 hover:bg-blue-800 text-white font-semibold rounded-md shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                             >
-                                Donate
+                                Generate UPI QR Code
                             </button>
                         </div>
                     </form>
+                    {upiLink && (
+                        <div className="mt-8 text-center">
+                            <QRCode value={upiLink} size={256} />
+                            <div className="mt-4">
+                                <a href={upiLink} className="upi-pay1 w-full px-6 py-3 bg-green-700 hover:bg-green-800 text-white font-semibold rounded-md shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    Pay Now!
+                                </a>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
         </>
