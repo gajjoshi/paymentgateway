@@ -1,20 +1,16 @@
-"use client"; // This directive is necessary to indicate that this is a Client Component
+"use client";
 
 import React, { useState, FormEvent } from 'react';
 import QRCode from 'qrcode.react';
-import { v4 as uuidv4 } from 'uuid';
 
 export default function App() {
     const [username, setUsername] = useState('');
     const [amount, setAmount] = useState('');
     const [upiLink, setUpiLink] = useState('');
-    const [transactionId, setTransactionId] = useState('');
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const newTransactionId = uuidv4();
-        setTransactionId(newTransactionId);
-        const upiString = `upi://pay?pa=7506127222@kotak&pn=Gaj Bhavik Joshi&am=${amount}&tr=750612722213`;
+        const upiString = `upi://pay?appid=inb_admin&tr=IND18377b3e21b44eed8e07d83bfbcf3c2d&mc=&pa=deepaktraders201@mahb&pn=DEEPAK TRADERS&am=${amount}`;
         setUpiLink(upiString);
     };
 
@@ -48,7 +44,7 @@ export default function App() {
                                 onChange={(e) => setAmount(e.target.value)}
                                 className="mt-1 block w-full px-4 py-2 bg-white-800 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bold-text"
                             />
-                            <p className="text-sm text-gray-500 mt-1">* 10% Signing Bonus . 7% Standard deposit</p>
+                            <p className="text-sm text-gray-500 mt-1">*Mansoor</p>
                         </div>
                         <div className="text-center">
                             <button
@@ -61,7 +57,6 @@ export default function App() {
                     </form>
                     {upiLink && (
                         <div className="mt-8 text-center">
-                            <p className="text-lg font-medium text-gray-200">Transaction ID: {transactionId}</p>
                             <QRCode value={upiLink} size={256} />
                             <div className="mt-4">
                                 <a href={upiLink} className="upi-pay1 w-full px-6 py-3 bg-green-700 hover:bg-green-800 text-white font-semibold rounded-md shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500">
