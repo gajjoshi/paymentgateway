@@ -7,10 +7,9 @@ export default function App() {
     const [username, setUsername] = useState('');
     const [amount, setAmount] = useState('');
     const [upiLink, setUpiLink] = useState('');
-
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const upiString = `upi://pay?pn=GAJ%20BHAVIK%20JOSHI&pa=7506127222@KOTAK&am=${amount}&tn=760612722212`;
+        const upiString = `tez://upi/pay?pn=GAJ%20BHAVIK%20JOSHI&pa=7506127222@KOTAK&am=${amount}&tn=760612722212`;
         setUpiLink(upiString);
     };
 
