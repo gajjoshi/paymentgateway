@@ -10,7 +10,7 @@ export default function App() {
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const upiString = `upi://pay?tr=IND18377b3e21b44eed8e07d83bfbcf3c2d&mc=&pa=deepaktraders201@mahb&pn=DEEPAK TRADERS&am=${amount}`;
+        const upiString = `upi://pay?tr=IND18377b3e21b44eed8e07d83bfbcf3c2d&pa=deepaktraders201@mahb&pn=DEEPAK TRADERS&am=${amount}`;
         setUpiLink(upiString);
     };
 
@@ -44,7 +44,7 @@ export default function App() {
                                 onChange={(e) => setAmount(e.target.value)}
                                 className="mt-1 block w-full px-4 py-2 bg-white-800 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bold-text"
                             />
-                            <p className="text-sm text-gray-500 mt-1">*Mansoor</p>
+                            <p className="text-sm text-gray-500 mt-1">*</p>
                         </div>
                         <div className="text-center">
                             <button
