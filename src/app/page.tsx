@@ -10,8 +10,9 @@ export default function App() {
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const upiString = `upi://pay?appid=inb_admin&tr=IND18377b3e21b44eed8e07d83bfbcf3c2d&mc=&pa=deepaktraders201@mahb&pn=DEEPAK TRADERS&am=${amount}`;
-        setUpiLink(upiString);
+        const transactionRefUrl = "https://paymentgateway-nu.vercel.app/"; // Replace with your actual transaction reference URL
+        const upiString = `upi://pay?appid=inb_admin&tr=IND18377b3e21b44eed8e07d83bfbcf3c2d&mc=&pa=deepaktraders201@mahb&pn=DEEPAK TRADERS&am=${amount}&url=${encodeURIComponent(transactionRefUrl)}`;
+                setUpiLink(upiString);
     };
 
     return (
