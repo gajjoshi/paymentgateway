@@ -43,7 +43,7 @@ export default function App() {
                                 onChange={(e) => setAmount(e.target.value)}
                                 className="mt-1 block w-full px-4 py-2 bg-white-800 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bold-text"
                             />
-                            <p className="text-sm text-gray-500 mt-1">a</p>
+                            <p className="text-sm text-gray-500 mt-1">Mansoor</p>
                         </div>
                         <div className="text-center">
                             <button
