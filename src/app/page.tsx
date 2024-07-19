@@ -7,9 +7,10 @@ export default function App() {
     const [username, setUsername] = useState('');
     const [amount, setAmount] = useState('');
     const [upiLink, setUpiLink] = useState('');
+
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const upiString = `upi://pay?pn=GAJ%20BHAVIK%20JOSHI&pa=7506127222@KOTAK&am=${amount}`;
+        const upiString = `tez://upi/pay?pa=7506127222@kotak&pn=Gaj Joshi&am=${amount}`;
         setUpiLink(upiString);
     };
 
@@ -43,7 +44,7 @@ export default function App() {
                                 onChange={(e) => setAmount(e.target.value)}
                                 className="mt-1 block w-full px-4 py-2 bg-white-800 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bold-text"
                             />
-                            <p className="text-sm text-gray-500 mt-1">a</p>
+                            <p className="text-sm text-gray-500 mt-1">* 10% Signing Bonus . 7% Standard deposit</p>
                         </div>
                         <div className="text-center">
                             <button
