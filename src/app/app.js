@@ -4,13 +4,23 @@ const http = require('http').Server(app);
 const mongoose = require('mongoose');
 const multer = require('multer');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
+// Connect to MongoDB
 mongoose.connect('mongodb+srv://Prime:prime@cluster0.mtl5kau.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
 
 const User = require('./models/userModel');
+
+// Enable CORS
+app.use(cors({
+    origin: 'http://localhost:3000', // Update this to match your frontend URL
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // Allow cookies to be sent
+    optionsSuccessStatus: 204
+}));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,6 +37,7 @@ app.post('/upload', upload.single('paymentScreenshot'), async (req, res) => {
             name: username,
             email: email,
             amount: amount,
+            updateStatus:'pending',
             paymentScreenshot: paymentScreenshot
         });
 

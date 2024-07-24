@@ -12,7 +12,6 @@ export default function App() {
     const [paymentScreenshot, setPaymentScreenshot] = useState<File | null>(null);
 
     const handleGenerateQR = () => {
-        const transactionRefUrl = "https://paymentgateway-nu.vercel.app/"; // Replace with your actual transaction reference URL
         const upiString = `upi://pay?pa=7506127222@kotak&pn=GAJ BHAVIK JOSHI&am=${amount}`;
         setUpiLink(upiString);
     };
@@ -28,7 +27,7 @@ export default function App() {
         }
 
         try {
-            await axios.post('http://localhost:5000/upload', formData, {
+            const response = await axios.post('http://localhost:5000/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -66,7 +65,7 @@ export default function App() {
                                 className="mt-1 block w-full px-4 py-2 bg-white-800 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bold-text"
                             />
                         </div>
-                        {/* <div>
+                        <div>
                             <label htmlFor="email" className="block text-lg font-medium text-gray-200">Email</label>
                             <input
                                 type="email"
@@ -76,7 +75,7 @@ export default function App() {
                                 onChange={(e) => setEmail(e.target.value)}
                                 className="mt-1 block w-full px-4 py-2 bg-white-800 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bold-text"
                             />
-                        </div> */}
+                        </div>
                         <div>
                             <label htmlFor="amount" className="block text-lg font-medium text-gray-200">Amount</label>
                             <input
