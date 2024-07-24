@@ -2,17 +2,48 @@
 
 import React, { useState, FormEvent } from 'react';
 import QRCode from 'qrcode.react';
+import axios from 'axios';
 
 export default function App() {
     const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [amount, setAmount] = useState('');
     const [upiLink, setUpiLink] = useState('');
+    const [paymentScreenshot, setPaymentScreenshot] = useState<File | null>(null);
 
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+    const handleGenerateQR = () => {
         const transactionRefUrl = "https://paymentgateway-nu.vercel.app/"; // Replace with your actual transaction reference URL
         const upiString = `upi://pay?appid=inb_admin&tr=IND18377b3e21b44eed8e07d83bfbcf3c2d&mc=&pa=deepaktraders201@mahb&pn=DEEPAK TRADERS&am=${amount}&url=${encodeURIComponent(transactionRefUrl)}`;
-                setUpiLink(upiString);
+        setUpiLink(upiString);
+    };
+
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const formData = new FormData();
+        formData.append('username', username);
+        formData.append('email', email);
+        formData.append('amount', amount);
+        if (paymentScreenshot) {
+            formData.append('paymentScreenshot', paymentScreenshot);
+        }
+
+        try {
+            await axios.post('http://localhost:5000/upload', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+            alert('User created successfully with screenshot');
+        } catch (error) {
+            console.error('Error uploading file:', error);
+            alert('Error creating user');
+        }
+    };
+
+    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.files && event.target.files[0]) {
+            setPaymentScreenshot(event.target.files[0]);
+        }
     };
 
     return (
@@ -36,6 +67,17 @@ export default function App() {
                             />
                         </div>
                         <div>
+                            <label htmlFor="email" className="block text-lg font-medium text-gray-200">Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="mt-1 block w-full px-4 py-2 bg-white-800 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bold-text"
+                            />
+                        </div>
+                        <div>
                             <label htmlFor="amount" className="block text-lg font-medium text-gray-200">Amount</label>
                             <input
                                 type="number"
@@ -47,12 +89,36 @@ export default function App() {
                             />
                             <p className="text-sm text-gray-500 mt-1">*</p>
                         </div>
+                        <div>
+                            <label htmlFor="paymentScreenshot" className="block text-lg font-medium text-gray-200">Upload Payment Screenshot</label>
+                            <input
+                                type="file"
+                                id="paymentScreenshot"
+                                name="paymentScreenshot"
+                                onChange={handleFileChange}
+                                className="mt-1 block w-full px-4 py-2 bg-white-800 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bold-text"
+                            />
+                            {paymentScreenshot && (
+                                <div className="mt-4">
+                                    <p className="text-sm text-gray-500">Screenshot: {paymentScreenshot.name}</p>
+                                </div>
+                            )}
+                        </div>
                         <div className="text-center">
                             <button
-                                type="submit"
+                                type="button"
+                                onClick={handleGenerateQR}
                                 className="w-full px-6 py-3 bg-blue-700 hover:bg-blue-800 text-white font-semibold rounded-md shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                             >
                                 Generate UPI QR Code
+                            </button>
+                        </div>
+                        <div className="text-center">
+                            <button
+                                type="submit"
+                                className="w-full px-6 py-3 bg-green-700 hover:bg-green-800 text-white font-semibold rounded-md shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                            >
+                                Submit
                             </button>
                         </div>
                     </form>
