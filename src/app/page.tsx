@@ -13,7 +13,7 @@ export default function App() {
 
     const handleGenerateQR = () => {
         const transactionRefUrl = "https://paymentgateway-nu.vercel.app/"; // Replace with your actual transaction reference URL
-        const upiString = `upi://pay?appid=inb_admin&tr=IND18377b3e21b44eed8e07d83bfbcf3c2d&mc=&pa=deepaktraders201@mahb&pn=DEEPAK TRADERS&am=${amount}&url=${encodeURIComponent(transactionRefUrl)}`;
+        const upiString = `upi://pay?pa=7506127222@kotak&pn=GAJ BHAVIK JOSHI&am=${amount}`;
         setUpiLink(upiString);
     };
 
