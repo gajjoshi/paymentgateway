@@ -37,8 +37,8 @@ app.post('/upload', upload.single('paymentScreenshot'), async (req, res) => {
             name: username,
             email: email,
             amount: amount,
-            updateStatus:'pending',
-            paymentScreenshot: paymentScreenshot
+            paymentScreenshot: paymentScreenshot,
+            status: 0 // Set status to 0
         });
 
         res.status(200).send('User created successfully with screenshot');
